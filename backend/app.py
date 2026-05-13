@@ -5,6 +5,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "krishi.db")
 
@@ -688,8 +689,9 @@ def farmer_register():
     except sqlite3.IntegrityError:
         conn.close()
         return response_error("A user with that phone or Aadhaar already exists.")
+    finally:
+        conn.close()
 
-    conn.close()
     return response_ok(
         {
             "userId": user_id,
@@ -1452,4 +1454,5 @@ def internal_error(error):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
