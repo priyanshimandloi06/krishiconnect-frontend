@@ -27,7 +27,7 @@ import ragi from "@/assets/produce-ragi.jpg";
 import oats from "@/assets/produce-oats.jpg";
 import type { Product } from "./data";
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000/api";
+const BASE_URL = import.meta.env.VITE_API_URL ?? "https://krishiconnect-backend-r402.onrender.com/api";
 
 const defaultImage = rice;
 
